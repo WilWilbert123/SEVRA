@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native';
+import Earth3D from '../components/Earth3D';
 
 const Home = () => {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Earth3D />
     </View>
   )
 }
@@ -11,5 +12,5 @@ const Home = () => {
 export default Home
 
 const styles = StyleSheet.create({
-    container: { flex: 1, alignItems: 'center', justifyContent: 'center' }
+    container: { flex: 1 }
 })
