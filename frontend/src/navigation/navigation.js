@@ -13,7 +13,7 @@ import Settings from '../screens/Settings';
 const Tab = createBottomTabNavigator();
 
 const ICON_MAP = {
-  Home: 'home',
+  Home: 'earth',
   News: 'newspaper',
   Help: 'help-circle',
   Settings: 'settings',
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 34,
     overflow: 'hidden',
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: 'rgba(53, 47, 47, 0.29)',
     borderWidth: 1,
     borderColor: 'rgba(0, 0, 0, 0.2)',
     shadowColor: '#000',
