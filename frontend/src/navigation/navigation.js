@@ -1,3 +1,4 @@
+// frontend/src/navigation/AppNavigator.js
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -5,6 +6,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import EmergencyDashboard from '../screens/EmergencyDashboard';
 import Help from '../screens/Help';
 import Home from '../screens/Home';
 import News from '../screens/News';
@@ -15,6 +17,7 @@ const Tab = createBottomTabNavigator();
 const ICON_MAP = {
   Home: 'earth',
   News: 'newspaper',
+  Dashboard: 'warning',
   Help: 'help-circle',
   Settings: 'settings',
 };
@@ -54,18 +57,12 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
               key={route.key}
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
               onPress={onPress}
               style={styles.tabButton}
               activeOpacity={0.8}
             >
               <View style={[styles.iconWrapper, isFocused && styles.iconWrapperActive]}>
-                <Ionicons
-                  name={iconName}
-                  size={22}
-                  color={isFocused ? '#fff' : 'rgba(255,255,255,0.75)'}
-                />
+                <Ionicons name={iconName} size={28} color={isFocused ? '#fff' : 'rgba(255,255,255,0.75)'} />
               </View>
               <Text style={[styles.tabLabel, isFocused && styles.tabLabelActive]}>{label}</Text>
             </TouchableOpacity>
@@ -84,6 +81,7 @@ const AppNavigator = () => {
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="News" component={News} />
+      <Tab.Screen name="Dashboard" component={EmergencyDashboard} />
       <Tab.Screen name="Help" component={Help} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
@@ -100,12 +98,11 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: 'rgba(53, 47, 47, 0.29)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.2)',
+    borderColor: 'rgba(0, 180, 255, 0.2)',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 18 },
     shadowOpacity: 0.14,
     shadowRadius: 30,
-   
   },
   glassLayer: {
     ...StyleSheet.absoluteFillObject,
@@ -130,16 +127,17 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    
     marginBottom: 2,
   },
-  
+  iconWrapperActive: {
+    backgroundColor: 'rgba(0, 180, 255, 0.2)',
+  },
   tabLabel: {
     fontSize: 11,
-    color: 'rgba(1, 1, 1, 0.75)',
+    color: 'rgba(255, 255, 255, 0.75)',
   },
   tabLabelActive: {
-    color: '#0032e9',
+    color: '#00e5ff',
     fontWeight: '600',
   },
 });
